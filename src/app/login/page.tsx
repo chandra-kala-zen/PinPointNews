@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { z } from "zod"; // Import Zod
-import { Button } from "@/components/ui/button"; // Shadcn Button
-import { Input } from "@/components/ui/input"; // Shadcn Input
-import { Card } from "@/components/ui/card"; // Shadcn Card
-import { Typography } from "@/components/ui/typography"; // Shadcn Typography
+import { z } from "zod"; 
+import { Button } from "@/components/ui/button"; 
+import { Input } from "@/components/ui/input"; 
+import { Card } from "@/components/ui/card"; 
+import { Typography } from "@/components/ui/typography"; 
 
 const loginSchema = z.object({
   email: z.string().email("Email is invalid"),
@@ -16,7 +16,7 @@ const loginSchema = z.object({
 
 const Login = () => {
   const router = useRouter();
-  const [error, setError] = useState<string>(""); // Ensure the error state is always a string
+  const [error, setError] = useState<string>(""); 
   const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Login = () => {
     const validationResult = loginSchema.safeParse({ email, password });
     if (!validationResult.success) {
 
-      // Check for errors and provide a default empty string if none exist
+    // Check for errors 
       setError(
         validationResult.error.format().email?._errors[0] ||
         validationResult.error.format().password?._errors[0] ||
@@ -65,8 +65,8 @@ const Login = () => {
 
   return (
     sessionStatus !== "authenticated" && (
-      <div className="flex min-h-screen flex-col items-center justify-center p-24 bg-[#212121]">
-        <Card className="p-8 w-96">
+      <div className="flex min-h-screen flex-col items-center justify-center p-24">
+        <Card className="p-8 w-96 border-2 border-[#d9ced4]">
           <h1 className="text-center  font-semibold mb-8">
             Login
           </h1>

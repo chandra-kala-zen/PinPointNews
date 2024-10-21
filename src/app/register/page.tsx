@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button"; // Shadcn Button
-import { Input } from "@/components/ui/input"; // Shadcn Input
-import { Card } from "@/components/ui/card"; // Shadcn Card
-import { useForm } from "react-hook-form"; // For form management
-import { z } from "zod"; // For validation schema
-import { zodResolver } from "@hookform/resolvers/zod"; // For Zod integration
+import { Button } from "@/components/ui/button"; 
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card"; 
+import { useForm } from "react-hook-form"; 
+import { z } from "zod"; 
+import { zodResolver } from "@hookform/resolvers/zod"; 
 import { Typography } from "@/components/ui/typography";
 
 // Validation schema
@@ -50,7 +50,7 @@ function Register() {
                 setSuccess("User created successfully!");
                 setTimeout(() => {
                     router.push("/login");
-                }, 2000); // Wait 2 seconds before redirecting
+                }, 2000); 
             } else {
                 setServerError("Failed to create an account. Please try again.");
             }
@@ -60,26 +60,26 @@ function Register() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-[#212121]">
-            <Card className="w-[400px] p-6 ">
+        <div className="flex items-center justify-center min-h-screen ">
+            <Card className="w-[400px] p-6 border-2 border-[#d9ced4]">
                 <Typography variant="h1" className="text-center font-bold  mb-4">Register</Typography>
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
                     <Input
                         type="text"
                         placeholder="Email"
                         
-                        {...register("email")} // Register email input with validation
+                        {...register("email")} 
                         className={`p-2 bg-white px-3 py-3 f border rounded ${errors.email ? 'border-red-500' : ''}`}
                     />
-                    {errors.email && <p className="text-red-500">{errors.email.message}</p>} {/* Email error message */}
+                    {errors.email && <p className="text-red-500">{errors.email.message}</p>} 
 
                     <Input
                         type="password"
                         placeholder="Password"
-                        {...register("password")} // Register password input with validation
+                        {...register("password")} 
                         className={`p-2 bg-white border px-3 py-3 mb-4 frounded ${errors.password ? 'border-red-500' : ''}`}
                     />
-                    {errors.password && <p className="text-red-500">{errors.password.message}</p>} {/* Password error message */}
+                    {errors.password && <p className="text-red-500">{errors.password.message}</p>} 
 
                     <Button type="submit" className="bg-blue-800  hover:bg-blue-600 py-3 text-white">
                         Submit
